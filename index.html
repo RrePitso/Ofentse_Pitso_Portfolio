@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ofentse Pitso — Software Developer & Builder</title>
+<meta name="description" content="Ofentse Pitso — final-year Computer Science student, founder of iDelivery, and builder of AI-powered software for real African problems." />
+
+<!-- Two typefaces, two jobs: Newsreader gives the headings personality,
+     IBM Plex Sans keeps the body text technical and easy to read. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  /* ============================================
+     DESIGN TOKENS
+     Every color and size the site uses lives here.
+     Change a value once, it updates everywhere.
+     ============================================ */
+  :root {
+    --ink:        #12181F;   /* near-black navy, used for the sidebar + text */
+    --paper:      #EDEEEF;   /* cool light-gray background, not warm cream */
+    --paper-2:    #E2E4E6;   /* slightly darker paper, for card backgrounds */
+    --gold:       #E3A73B;   /* one accent color, used only for emphasis + CTAs */
+    --teal:       #2F6F5E;   /* second accent, used ONLY as a "live/deployed" signal */
+    --text-body:  #262C33;
+    --text-muted: #5B6169;
+    --border:     #D4D6D8;
+    --border-dark: #2A323C;
+
+    --font-display: 'Newsreader', serif;
+    --font-body: 'IBM Plex Sans', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+
+    --max-line: 62ch;
+    --sidebar-width: 280px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation: none !important; transition: none !important; }
+  }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--text-body);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  a { color: inherit; }
+
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    line-height: 1.15;
+    margin: 0 0 0.5em 0;
+  }
+
+  p { max-width: var(--max-line); }
+
+  section { padding: 4.5rem 0; border-bottom: 1px solid var(--border); }
+  section:last-of-type { border-bottom: none; }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  /* ============================================
+     LAYOUT: a fixed sidebar (desktop) + scrolling
+     main column. On mobile the sidebar collapses
+     into a top bar.
+     ============================================ */
+  .layout {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) 1fr;
+    min-height: 100vh;
+  }
+
+  .sidebar {
+    background: var(--ink);
+    color: #E9ECEF;
+    padding: 2.5rem 2rem;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .avatar {
+    width: 52px;
+    height: 52px;
+    object-fit: cover;
+    border: 2px solid var(--gold);
+    flex-shrink: 0;
+  }
+
+  .sidebar .name {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-style: italic;
+    margin-bottom: 0.15rem;
+  }
+
+  .sidebar .role {
+    font-size: 0.85rem;
+    color: #9BA3AD;
+    margin-bottom: 2.5rem;
+  }
+
+  .status-line {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: #9BA3AD;
+    margin-bottom: 2rem;
+  }
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--teal);
+    box-shadow: 0 0 0 3px rgba(47, 111, 94, 0.25);
+  }
+
+  .sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .sidebar nav a {
+    text-decoration: none;
+    font-size: 0.95rem;
+    color: #C9CED4;
+    border-left: 2px solid transparent;
+    padding-left: 0.75rem;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .sidebar nav a:hover,
+  .sidebar nav a.active {
+    color: #fff;
+    border-left-color: var(--gold);
+  }
+
+  .sidebar .socials {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  .sidebar .socials a {
+    text-decoration: none;
+    color: #9BA3AD;
+  }
+  .sidebar .socials a:hover { color: #fff; }
+
+  main {
+    padding: 0 3rem;
+    max-width: 900px;
+  }
+
+  /* ============================================
+     HERO
+     ============================================ */
+  .hero {
+    padding-top: 5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero h1 {
+    font-size: clamp(2.1rem, 4vw, 3rem);
+    font-weight: 500;
+    max-width: 16ch;
+  }
+
+  .hero .lede {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    max-width: 48ch;
+    margin-bottom: 2rem;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    margin-top: 2.5rem;
+  }
+
+  .stat .num {
+    font-family: var(--font-display);
+    font-size: 1.9rem;
+    display: block;
+  }
+
+  .stat .label {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+
+  .cta-row {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2.25rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.7rem 1.4rem;
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 600;
+    border-radius: 3px;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--ink);
+  }
+  .btn-primary:hover { background: #d1962f; }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--border-dark);
+  }
+  .btn-secondary:hover { background: var(--paper-2); }
+
+  /* ============================================
+     ABOUT / SKILLS
+     ============================================ */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .skill-group h3 {
+    font-size: 1rem;
+    font-family: var(--font-body);
+    font-weight: 700;
+    margin-bottom: 0.9rem;
+  }
+
+  .pill-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .pill {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    background: var(--paper-2);
+    border: 1px solid var(--border);
+    padding: 0.3rem 0.65rem;
+    border-radius: 3px;
+  }
+
+  /* ============================================
+     PROJECTS
+     Each project is a bordered block with a left
+     accent bar — not a rounded shadow card.
+     ============================================ */
+  .project {
+    border-left: 3px solid var(--border-dark);
+    padding: 0.25rem 0 0.25rem 1.5rem;
+    margin-bottom: 2.75rem;
+  }
+
+  .project.is-live { border-left-color: var(--teal); }
+
+  .project-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .project h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .live-tag {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--teal);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    white-space: nowrap;
+  }
+
+  .project p.desc {
+    color: var(--text-muted);
+    margin-bottom: 0.9rem;
+  }
+
+  .project .stack {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-bottom: 0.9rem;
+  }
+
+  .project .links a {
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-right: 1.25rem;
+    border-bottom: 1px solid var(--gold);
+  }
+
+  /* ============================================
+     MINI GRID — compact cards for the smaller
+     deployed apps, lighter weight than .project
+     ============================================ */
+  .mini-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .mini-card {
+    border: 1px solid var(--border);
+    background: var(--paper-2);
+    padding: 1rem 1.15rem;
+  }
+
+  .mini-card h4 {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin: 0 0 0.35rem 0;
+  }
+
+  .mini-card p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin: 0 0 0.6rem 0;
+  }
+
+  .mini-card a {
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid var(--gold);
+  }
+
+  /* ============================================
+     TIMELINE (experience + education)
+     ============================================ */
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 1.5rem;
+    padding: 1.25rem 0;
+    border-top: 1px solid var(--border);
+  }
+  .timeline-item:first-child { border-top: none; }
+
+  .timeline-item .when {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    padding-top: 0.2rem;
+  }
+
+  .timeline-item h3 { font-size: 1.05rem; margin-bottom: 0.2rem; }
+  .timeline-item .org { color: var(--text-muted); font-size: 0.92rem; margin-bottom: 0.4rem; }
+  .timeline-item p.body-text { color: var(--text-body); font-size: 0.95rem; }
+
+  /* ============================================
+     CERTIFICATIONS
+     ============================================ */
+  .cert-list { list-style: none; padding: 0; margin: 1rem 0 0 0; }
+  .cert-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.9rem 0;
+    border-top: 1px solid var(--border);
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .cert-list li:first-child { border-top: none; }
+  .cert-name { font-weight: 600; }
+  .cert-status { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-muted); }
+
+  /* ============================================
+     CONTACT / FOOTER
+     ============================================ */
+  .contact-block {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .contact-block a {
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px solid var(--gold);
+  }
+
+  footer {
+    padding: 2.5rem 3rem 4rem;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+
+  /* One deliberate motion moment: the hero content
+     settles in on load. Nothing else animates. */
+  .hero-anim {
+    animation: rise 0.6s ease-out both;
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ============================================
+     MOBILE
+     ============================================ */
+  .menu-toggle { display: none; }
+
+  @media (max-width: 860px) {
+    .layout { grid-template-columns: 1fr; }
+
+    .sidebar {
+      position: sticky;
+      top: 0;
+      height: auto;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.25rem;
+      z-index: 20;
+    }
+
+    .sidebar .name { font-size: 1.15rem; margin-bottom: 0; }
+    .sidebar .role, .sidebar .status-line, .sidebar .socials { display: none; }
+
+    .sidebar nav { display: none; }
+    .sidebar.open nav {
+      display: block;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--ink);
+      padding: 1.25rem;
+    }
+    .sidebar.open nav ul { gap: 1.1rem; }
+
+    .menu-toggle {
+      display: block;
+      background: none;
+      border: 1px solid #3A4552;
+      color: #E9ECEF;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      padding: 0.4rem 0.7rem;
+      border-radius: 3px;
+    }
+
+    main { padding: 0 1.25rem; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .mini-grid { grid-template-columns: 1fr; }
+    .timeline-item { grid-template-columns: 1fr; gap: 0.3rem; }
+    footer { padding: 2rem 1.25rem 3rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- ============================================
+       SIDEBAR: identity + navigation. Sticky on
+       desktop, collapses to a top bar on mobile.
+       ============================================ -->
+  <aside class="sidebar" id="sidebar">
+    <div>
+      <div style="display:flex; align-items:center; justify-content:space-between;">
+        <div style="display:flex; align-items:center; gap:0.8rem;">
+          <img src="Profile.jpg" alt="Ofentse Pitso" class="avatar" />
+          <div>
+            <div class="name">Ofentse Pitso</div>
+            <div class="role">Software Developer & Builder</div>
+          </div>
+        </div>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">Menu</button>
+      </div>
+
+      <div class="status-line">
+        <span class="status-dot"></span>
+        Open to AI / software engineering roles
+      </div>
+
+      <nav>
+        <ul>
+          <li><a href="#home" class="nav-link">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
+          <li><a href="#education" class="nav-link">Education</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="socials">
+      <a href="https://github.com/RrePitso" target="_blank" rel="noopener">GitHub — RrePitso</a>
+      <a href="https://linkedin.com/in/ofentse-pitso" target="_blank" rel="noopener">LinkedIn — ofentse-pitso</a>
+    </div>
+  </aside>
+
+  <!-- ============================================
+       MAIN CONTENT
+       ============================================ -->
+  <main>
+
+    <!-- HOME / HERO -->
+    <section class="hero" id="home">
+      <div class="hero-anim">
+        <span class="eyebrow">Final-year BSc Computer Science, University of Fort Hare</span>
+        <h1>I build software that solves problems where I live, then ship it.</h1>
+        <p class="lede">
+          I'm a developer who prefers a working product over a polished slide deck.
+          Most of my public work lives in a set of deployed apps — analytics tools,
+          MLOps demos, and small business tools — each one picking a real, local
+          problem and building and shipping something that actually works, often
+          with AI baked into the core of it.
+        </p>
+
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#projects">See my projects</a>
+          <a class="btn btn-secondary" href="CV-Ofentse-Pitso.pdf" download>Download CV</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="num">70+</span>
+            <span class="label">public repositories</span>
+          </div>
+          <div class="stat">
+            <span class="num">7</span>
+            <span class="label">deployed Streamlit apps</span>
+          </div>
+          <div class="stat">
+            <span class="num">2</span>
+            <span class="label">Microsoft certifications — DP-900 & DP-700</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <span class="eyebrow">About me</span>
+      <h2>I'd rather ship it than pitch it</h2>
+      <p>
+        I like turning an idea into something people can actually click on. That
+        instinct started with iDelivery, a hyperlocal delivery platform I founded
+        while still a student, and it's carried through into most of what I build
+        now: analytics tools, MLOps demos, and small business tools that go from a
+        notebook or a rough idea to a deployed, working app.
+      </p>
+      <p>
+        A good example is my World Cup 2026 analytics project — it began as a
+        Google Colab notebook with a Random Forest model, and grew into a full
+        Dixon-Coles Poisson goal model with calibrated probabilities, a Streamlit
+        dashboard, CI/CD, and a LangChain + Gemini agent that answers questions
+        over the match data.
+      </p>
+      <p>
+        I'm entrepreneurially minded by default: I'd rather learn a tool by shipping
+        something with it than by reading about it. Most of what I know about
+        large language models, RAG pipelines, and API integration, I learned by
+        building products that needed them.
+      </p>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <span class="eyebrow">Skills</span>
+      <h2>What I actually work with</h2>
+
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h3>Languages & frameworks</h3>
+          <div class="pill-row">
+            <span class="pill">TypeScript</span>
+            <span class="pill">JavaScript</span>
+            <span class="pill">Python</span>
+            <span class="pill">React</span>
+            <span class="pill">Node.js / Express</span>
+            <span class="pill">SQL</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3>Platforms & tools</h3>
+          <div class="pill-row">
+            <span class="pill">Firebase</span>
+            <span class="pill">Microsoft Azure</span>
+            <span class="pill">Google AI Studio</span>
+            <span class="pill">Gemini API</span>
+            <span class="pill">Streamlit</span>
+            <span class="pill">Git / GitHub Actions</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3>AI & data</h3>
+          <div class="pill-row">
+            <span class="pill">RAG pipelines</span>
+            <span class="pill">LangChain</span>
+            <span class="pill">Predictive modelling</span>
+            <span class="pill">Pandas / scikit-learn</span>
+            <span class="pill">WhatsApp API integration</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3>How I work</h3>
+          <div class="pill-row">
+            <span class="pill">Founder mindset</span>
+            <span class="pill">Ship-first learning</span>
+            <span class="pill">Explains the code, not just the demo</span>
+            <span class="pill">Comfortable owning a product end-to-end</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <span class="eyebrow">Projects</span>
+      <h2>A few things I've shipped</h2>
+
+      <div class="project is-live">
+        <div class="project-head">
+          <h3>World Cup 2026 Analytics</h3>
+          <span class="live-tag"><span class="status-dot"></span>Deployed</span>
+        </div>
+        <p class="desc">
+          A sports-analytics side project that grew well beyond a hobby: Dixon-Coles
+          Poisson goal modelling, calibrated win probabilities, and Kelly-criterion
+          bankroll management, wrapped in a Streamlit dashboard with CI/CD. I later
+          added a "Match Intel Agent" — a LangChain + Gemini RAG agent that answers
+          questions over the match data.
+        </p>
+        <div class="stack">Python · scikit-learn · LangChain · ChromaDB · Streamlit</div>
+        <div class="links">
+          <a href="https://world-cup-2026-bets.streamlit.app/" target="_blank" rel="noopener">Try it live</a>
+          <a href="https://github.com/RrePitso/World-Cup-2026-Bets" target="_blank" rel="noopener">View code</a>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-head">
+          <h3>Email RAG</h3>
+        </div>
+        <p class="desc">
+          An AI email classification system using retrieval-augmented generation,
+          deployed on Render. Built the first version, then went back to fix a
+          Gemini API regional restriction and identify technical debt — including
+          a plan to move from regex-based parsing to structured JSON output.
+        </p>
+        <div class="stack">React · Node.js · Express · TypeScript · Gemini API</div>
+        <div class="links">
+          <a href="https://github.com/RrePitso/Email_RAG" target="_blank" rel="noopener">View code</a>
+        </div>
+      </div>
+
+      <!-- Other deployed Streamlit apps. Descriptions below are my best guess
+           from the project names — swap in your own one-liners when you can. -->
+      <h3 style="margin-top: 0.5rem; font-size: 1.05rem; font-family: var(--font-body); font-weight: 700;">More deployed work</h3>
+      <div class="mini-grid">
+        <div class="mini-card">
+          <h4>Collivery Estimator</h4>
+          <!-- TODO: confirm/replace this description -->
+          <p>A delivery-cost estimation tool.</p>
+          <a href="https://colliveryestimator.streamlit.app/" target="_blank" rel="noopener">Open app →</a>
+        </div>
+        <div class="mini-card">
+          <h4>Department of Transport Pitch</h4>
+          <!-- TODO: confirm/replace this description -->
+          <p>A pitch/demo application built around a transport-sector use case.</p>
+          <a href="https://departmentoftransportpitch.streamlit.app/" target="_blank" rel="noopener">Open app →</a>
+        </div>
+        <div class="mini-card">
+          <h4>MLOps Churn Demo</h4>
+          <!-- TODO: confirm/replace this description -->
+          <p>A customer-churn prediction demo built to show MLOps practices end-to-end.</p>
+          <a href="https://mlops-churn-demo.streamlit.app/" target="_blank" rel="noopener">Open app →</a>
+        </div>
+        <div class="mini-card">
+          <h4>SpazaML</h4>
+          <p>A machine learning project supporting local spaza-shop retailers.</p>
+          <a href="https://spazaml-6rnex2xkxidhmv2xrqjxnn.streamlit.app/" target="_blank" rel="noopener">Open app →</a>
+        </div>
+        <div class="mini-card">
+          <h4>AccountingGit</h4>
+          <!-- TODO: confirm/replace this description -->
+          <p>A lightweight accounting/bookkeeping tool.</p>
+          <a href="https://accountinggit-ea8jmzbbhbgswyxj9us4ff.streamlit.app/" target="_blank" rel="noopener">Open app →</a>
+        </div>
+        <div class="mini-card">
+          <h4>Kokolobeng Demo</h4>
+          <!-- TODO: add a real one-line description, I don't have context on this one -->
+          <p>A demo application — description pending.</p>
+          <a href="https://kokolobengdemo.streamlit.app/" target="_blank" rel="noopener">Open app →</a>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <span class="eyebrow">Experience</span>
+      <h2>Where I've worked</h2>
+
+      <div class="timeline-item">
+        <div class="when">2024 — Present</div>
+        <div>
+          <h3>Founder</h3>
+          <div class="org">iDelivery</div>
+          <p class="body-text">Built and now run a live hyperlocal delivery platform serving the University of Fort Hare community.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="when">Ongoing</div>
+        <div>
+          <h3>Remote Software Developer</h3>
+          <div class="org">P&C Solutions</div>
+          <p class="body-text">Contract software development work, remote.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="when">Concludes Sept 2026</div>
+        <div>
+          <h3>MICT SETA Learnership</h3>
+          <div class="org">Dynamic DNA (DVT Group)</div>
+          <p class="body-text">Structured technical learnership programme.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION + CERTIFICATIONS -->
+    <section id="education">
+      <span class="eyebrow">Education & certifications</span>
+      <h2>Formal training</h2>
+
+      <div class="timeline-item">
+        <div class="when">Expected May 2027</div>
+        <div>
+          <h3>BSc Computer Science, Mathematics major</h3>
+          <div class="org">University of Fort Hare</div>
+          <p class="body-text">Final year — one outstanding exam remaining, in November 2026.</p>
+        </div>
+      </div>
+
+      <ul class="cert-list">
+        <li>
+          <span class="cert-name">Microsoft Azure Data Fundamentals (DP-900)</span>
+          <span class="cert-status">Certified — July 2026</span>
+        </li>
+        <li>
+          <span class="cert-name">Microsoft Fabric Data Engineer Associate (DP-700)</span>
+          <span class="cert-status">Certified — Sept 2026</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <span class="eyebrow">Contact</span>
+      <h2>Let's talk</h2>
+      <p>
+        I'm actively looking for AI and software engineering roles — internships
+        and graduate positions both. If something I've built here is relevant to
+        what your team is working on, I'd like to hear from you.
+      </p>
+      <div class="contact-block">
+        <!-- TODO: replace with your real email address -->
+        <a href="mailto:your.email@example.com">your.email@example.com</a>
+        <a href="https://github.com/RrePitso" target="_blank" rel="noopener">github.com/RrePitso</a>
+        <a href="https://linkedin.com/in/ofentse-pitso" target="_blank" rel="noopener">linkedin.com/in/ofentse-pitso</a>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  © 2026 Ofentse Pitso. Built by hand, not a template.
+</footer>
+
+<script>
+  // ============================================
+  // 1. Mobile menu toggle
+  // ============================================
+  const sidebar = document.getElementById('sidebar');
+  const menuToggle = document.getElementById('menuToggle');
+  menuToggle.addEventListener('click', () => {
+    sidebar.classList.toggle('open');
+  });
+
+  // Close the mobile menu after a nav link is tapped
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => sidebar.classList.remove('open'));
+  });
+
+  // ============================================
+  // 2. Highlight the current section in the sidebar
+  //    as the person scrolls (uses IntersectionObserver,
+  //    no scroll-event math needed).
+  // ============================================
+  const sections = document.querySelectorAll('main section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+        });
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+
+  sections.forEach(section => observer.observe(section));
+</script>
+
+</body>
+</html>
