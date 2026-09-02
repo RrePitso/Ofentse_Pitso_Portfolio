@@ -15,19 +15,17 @@
 <style>
   /* ============================================
      DESIGN TOKENS
-     Every color and size the site uses lives here.
-     Change a value once, it updates everywhere.
      ============================================ */
   :root {
-    --ink:        #12181F;   /* near-black navy, used for the sidebar + text */
-    --paper:      #EDEEEF;   /* cool light-gray background, not warm cream */
-    --paper-2:    #E2E4E6;   /* slightly darker paper, for card backgrounds */
-    --gold:       #E3A73B;   /* one accent color, used only for emphasis + CTAs */
-    --teal:       #2F6F5E;   /* second accent, used ONLY as a "live/deployed" signal */
+    --ink:        #12181F;
+    --paper:      #EDEEEF;
+    --paper-2:    #E2E4E6;
+    --gold:       #E3A73B;
+    --teal:       #2F6F5E;
     --text-body:  #262C33;
     --text-muted: #5B6169;
     --border:     #D4D6D8;
-    --border-dark: #2A323C;
+    --border-dark:#2A323C;
 
     --font-display: 'Newsreader', serif;
     --font-body: 'IBM Plex Sans', sans-serif;
@@ -78,9 +76,7 @@
   }
 
   /* ============================================
-     LAYOUT: a fixed sidebar (desktop) + scrolling
-     main column. On mobile the sidebar collapses
-     into a top bar.
+     LAYOUT
      ============================================ */
   .layout {
     display: grid;
@@ -283,8 +279,6 @@
 
   /* ============================================
      PROJECTS
-     Each project is a bordered block with a left
-     accent bar — not a rounded shadow card.
      ============================================ */
   .project {
     border-left: 3px solid var(--border-dark);
@@ -339,8 +333,7 @@
   }
 
   /* ============================================
-     MINI GRID — compact cards for the smaller
-     deployed apps, lighter weight than .project
+     MINI GRID
      ============================================ */
   .mini-grid {
     display: grid;
@@ -376,7 +369,7 @@
   }
 
   /* ============================================
-     TIMELINE (experience + education)
+     TIMELINE
      ============================================ */
   .timeline-item {
     display: grid;
@@ -421,14 +414,23 @@
   .contact-block {
     display: flex;
     flex-wrap: wrap;
-    gap: 2.5rem;
+    gap: 1rem;
     margin-top: 1.5rem;
+    align-items: center;
   }
 
   .contact-block a {
     text-decoration: none;
     font-weight: 600;
     border-bottom: 1px solid var(--gold);
+    color: var(--ink);
+    cursor: pointer;
+  }
+
+  .contact-block .email-note {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--text-muted);
   }
 
   footer {
@@ -437,8 +439,7 @@
     font-size: 0.85rem;
   }
 
-  /* One deliberate motion moment: the hero content
-     settles in on load. Nothing else animates. */
+  /* One deliberate motion moment */
   .hero-anim {
     animation: rise 0.6s ease-out both;
   }
@@ -504,10 +505,7 @@
 
 <div class="layout">
 
-  <!-- ============================================
-       SIDEBAR: identity + navigation. Sticky on
-       desktop, collapses to a top bar on mobile.
-       ============================================ -->
+  <!-- SIDEBAR -->
   <aside class="sidebar" id="sidebar">
     <div>
       <div style="display:flex; align-items:center; justify-content:space-between;">
@@ -545,9 +543,7 @@
     </div>
   </aside>
 
-  <!-- ============================================
-       MAIN CONTENT
-       ============================================ -->
+  <!-- MAIN CONTENT -->
   <main>
 
     <!-- HOME / HERO -->
@@ -704,25 +700,20 @@
         </div>
       </div>
 
-      <!-- Other deployed Streamlit apps. Descriptions below are my best guess
-           from the project names — swap in your own one-liners when you can. -->
       <h3 style="margin-top: 0.5rem; font-size: 1.05rem; font-family: var(--font-body); font-weight: 700;">More deployed work</h3>
       <div class="mini-grid">
         <div class="mini-card">
           <h4>Collivery Estimator</h4>
-          <!-- TODO: confirm/replace this description -->
           <p>A delivery-cost estimation tool.</p>
           <a href="https://colliveryestimator.streamlit.app/" target="_blank" rel="noopener">Open app →</a>
         </div>
         <div class="mini-card">
           <h4>Department of Transport Pitch</h4>
-          <!-- TODO: confirm/replace this description -->
           <p>A pitch/demo application built around a transport-sector use case.</p>
           <a href="https://departmentoftransportpitch.streamlit.app/" target="_blank" rel="noopener">Open app →</a>
         </div>
         <div class="mini-card">
           <h4>MLOps Churn Demo</h4>
-          <!-- TODO: confirm/replace this description -->
           <p>A customer-churn prediction demo built to show MLOps practices end-to-end.</p>
           <a href="https://mlops-churn-demo.streamlit.app/" target="_blank" rel="noopener">Open app →</a>
         </div>
@@ -733,13 +724,11 @@
         </div>
         <div class="mini-card">
           <h4>AccountingGit</h4>
-          <!-- TODO: confirm/replace this description -->
           <p>A lightweight accounting/bookkeeping tool.</p>
           <a href="https://accountinggit-ea8jmzbbhbgswyxj9us4ff.streamlit.app/" target="_blank" rel="noopener">Open app →</a>
         </div>
         <div class="mini-card">
           <h4>Kokolobeng Demo</h4>
-          <!-- TODO: add a real one-line description, I don't have context on this one -->
           <p>A demo application — description pending.</p>
           <a href="https://kokolobengdemo.streamlit.app/" target="_blank" rel="noopener">Open app →</a>
         </div>
@@ -816,8 +805,12 @@
         what your team is working on, I'd like to hear from you.
       </p>
       <div class="contact-block">
-        <!-- TODO: replace with your real email address -->
-        <a href="mailto:ofentsepitsopop@gmail.com">ofentsepitsopop@gmail.com</a>
+        <!-- Primary mailto link (opens default mail client). We add an explicit click handler below to avoid SPA/router interception -->
+        <a id="emailLink" href="mailto:ofentsepitsopop@gmail.com" aria-label="Email Ofentse Pitso at ofentsepitsopop@gmail.com">ofentsepitsopop@gmail.com</a>
+
+        <!-- Optional: open Gmail compose in a new tab (useful when no mail client is configured) -->
+        <a id="gmailCompose" href="https://mail.google.com/mail/?view=cm&fs=1&to=ofentsepitsopop@gmail.com" target="_blank" rel="noopener" aria-label="Compose email in Gmail (opens new tab)">Compose in Gmail</a>
+
         <a href="https://github.com/RrePitso" target="_blank" rel="noopener">github.com/RrePitso</a>
         <a href="https://linkedin.com/in/ofentse-pitso" target="_blank" rel="noopener">linkedin.com/in/ofentse-pitso</a>
       </div>
@@ -834,37 +827,62 @@
   // ============================================
   // 1. Mobile menu toggle
   // ============================================
-  const sidebar = document.getElementById('sidebar');
-  const menuToggle = document.getElementById('menuToggle');
-  menuToggle.addEventListener('click', () => {
-    sidebar.classList.toggle('open');
-  });
+  (function () {
+    const sidebar = document.getElementById('sidebar');
+    const menuToggle = document.getElementById('menuToggle');
+    if (menuToggle && sidebar) {
+      menuToggle.addEventListener('click', () => {
+        sidebar.classList.toggle('open');
+      });
+    }
 
-  // Close the mobile menu after a nav link is tapped
-  document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => sidebar.classList.remove('open'));
-  });
-
-  // ============================================
-  // 2. Highlight the current section in the sidebar
-  //    as the person scrolls (uses IntersectionObserver,
-  //    no scroll-event math needed).
-  // ============================================
-  const sections = document.querySelectorAll('main section[id]');
-  const navLinks = document.querySelectorAll('.nav-link');
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const id = entry.target.getAttribute('id');
-        navLinks.forEach(link => {
-          link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
-        });
-      }
+    // Close the mobile menu after a nav link is tapped
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => sidebar && sidebar.classList.remove('open'));
     });
-  }, { rootMargin: '-40% 0px -55% 0px' });
 
-  sections.forEach(section => observer.observe(section));
+    // ============================================
+    // 2. Highlight current section with IntersectionObserver
+    // ============================================
+    const sections = document.querySelectorAll('main section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    if ('IntersectionObserver' in window && sections.length && navLinks.length) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            navLinks.forEach(link => {
+              link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+            });
+          }
+        });
+      }, { rootMargin: '-40% 0px -55% 0px' });
+
+      sections.forEach(section => observer.observe(section));
+    }
+
+    // ============================================
+    // 3. Mailto handling
+    // ============================================
+    // Problem: some routers or JS can intercept anchor clicks and prevent the
+    // default browser behavior for mailto: links. We add a small handler that
+    // forces navigation to the mailto: URL. We do NOT open mailto in a new tab
+    // (browsers show a blank page when mailto: is opened in a new tab).
+    const emailLink = document.getElementById('emailLink');
+    if (emailLink) {
+      emailLink.addEventListener('click', (e) => {
+        // Prevent any router or other code from hijacking the click.
+        e.preventDefault();
+        // Force navigation to the mailto: URL on the current tab — this opens the user's
+        // default mail client (if configured).
+        window.location.href = emailLink.getAttribute('href');
+      });
+    }
+
+    // Optional: allow opening Gmail compose (already a normal link with target=_blank).
+    // No JS required for that link, it's provided as an explicit alternative.
+  })();
 </script>
 
 </body>
