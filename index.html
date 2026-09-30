@@ -6,16 +6,11 @@
 <title>Ofentse Phanuel Pitso — Software Developer & Builder</title>
 <meta name="description" content="Ofentse Pitso — final-year Computer Science student, founder of iDelivery, and builder of AI-powered software for real African problems." />
 
-<!-- Two typefaces, two jobs: Newsreader gives the headings personality,
-     IBM Plex Sans keeps the body text technical and easy to read. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
-  /* ============================================
-     DESIGN TOKENS
-     ============================================ */
   :root {
     --ink:        #12181F;
     --paper:      #EDEEEF;
@@ -36,7 +31,6 @@
   }
 
   * { box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
 
   @media (prefers-reduced-motion: reduce) {
@@ -75,9 +69,6 @@
     display: block;
   }
 
-  /* ============================================
-     LAYOUT
-     ============================================ */
   .layout {
     display: grid;
     grid-template-columns: var(--sidebar-width) 1fr;
@@ -135,6 +126,11 @@
     box-shadow: 0 0 0 3px rgba(47, 111, 94, 0.25);
   }
 
+  .status-dot.is-testing {
+    background: var(--gold);
+    box-shadow: 0 0 0 3px rgba(227, 167, 59, 0.25);
+  }
+
   .sidebar nav ul {
     list-style: none;
     padding: 0;
@@ -166,24 +162,12 @@
     font-size: 0.85rem;
   }
 
-  .sidebar .socials a {
-    text-decoration: none;
-    color: #9BA3AD;
-  }
+  .sidebar .socials a { text-decoration: none; color: #9BA3AD; }
   .sidebar .socials a:hover { color: #fff; }
 
-  main {
-    padding: 0 3rem;
-    max-width: 900px;
-  }
+  main { padding: 0 3rem; max-width: 900px; }
 
-  /* ============================================
-     HERO
-     ============================================ */
-  .hero {
-    padding-top: 5rem;
-    border-bottom: 1px solid var(--border);
-  }
+  .hero { padding-top: 5rem; border-bottom: 1px solid var(--border); }
 
   .hero h1 {
     font-size: clamp(2.1rem, 4vw, 3rem);
@@ -205,23 +189,10 @@
     margin-top: 2.5rem;
   }
 
-  .stat .num {
-    font-family: var(--font-display);
-    font-size: 1.9rem;
-    display: block;
-  }
+  .stat .num { font-family: var(--font-display); font-size: 1.9rem; display: block; }
+  .stat .label { font-size: 0.82rem; color: var(--text-muted); }
 
-  .stat .label {
-    font-size: 0.82rem;
-    color: var(--text-muted);
-  }
-
-  .cta-row {
-    display: flex;
-    gap: 1rem;
-    margin-top: 2.25rem;
-    flex-wrap: wrap;
-  }
+  .cta-row { display: flex; gap: 1rem; margin-top: 2.25rem; flex-wrap: wrap; }
 
   .btn {
     display: inline-block;
@@ -232,22 +203,12 @@
     border-radius: 3px;
   }
 
-  .btn-primary {
-    background: var(--gold);
-    color: var(--ink);
-  }
+  .btn-primary { background: var(--gold); color: var(--ink); }
   .btn-primary:hover { background: #d1962f; }
 
-  .btn-secondary {
-    background: transparent;
-    color: var(--ink);
-    border: 1px solid var(--border-dark);
-  }
+  .btn-secondary { background: transparent; color: var(--ink); border: 1px solid var(--border-dark); }
   .btn-secondary:hover { background: var(--paper-2); }
 
-  /* ============================================
-     ABOUT / SKILLS
-     ============================================ */
   .skills-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -262,11 +223,7 @@
     margin-bottom: 0.9rem;
   }
 
-  .pill-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
+  .pill-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 
   .pill {
     font-family: var(--font-mono);
@@ -277,9 +234,6 @@
     border-radius: 3px;
   }
 
-  /* ============================================
-     PROJECTS
-     ============================================ */
   .project {
     border-left: 3px solid var(--border-dark);
     padding: 0.25rem 0 0.25rem 1.5rem;
@@ -287,6 +241,7 @@
   }
 
   .project.is-live { border-left-color: var(--teal); }
+  .project.is-testing { border-left-color: var(--gold); }
 
   .project-head {
     display: flex;
@@ -296,10 +251,7 @@
     flex-wrap: wrap;
   }
 
-  .project h3 {
-    font-size: 1.3rem;
-    margin-bottom: 0.35rem;
-  }
+  .project h3 { font-size: 1.3rem; margin-bottom: 0.35rem; }
 
   .live-tag {
     font-family: var(--font-mono);
@@ -311,10 +263,9 @@
     white-space: nowrap;
   }
 
-  .project p.desc {
-    color: var(--text-muted);
-    margin-bottom: 0.9rem;
-  }
+  .live-tag.is-testing { color: #8a5f0f; }
+
+  .project p.desc { color: var(--text-muted); margin-bottom: 0.9rem; }
 
   .project .stack {
     font-family: var(--font-mono);
@@ -332,9 +283,12 @@
     border-bottom: 1px solid var(--gold);
   }
 
-  /* ============================================
-     MINI GRID
-     ============================================ */
+  .project .note {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-top: 0.75rem;
+  }
+
   .mini-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -342,11 +296,7 @@
     margin-top: 1rem;
   }
 
-  .mini-card {
-    border: 1px solid var(--border);
-    background: var(--paper-2);
-    padding: 1rem 1.15rem;
-  }
+  .mini-card { border: 1px solid var(--border); background: var(--paper-2); padding: 1rem 1.15rem; }
 
   .mini-card h4 {
     font-family: var(--font-body);
@@ -355,11 +305,7 @@
     margin: 0 0 0.35rem 0;
   }
 
-  .mini-card p {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    margin: 0 0 0.6rem 0;
-  }
+  .mini-card p { font-size: 0.85rem; color: var(--text-muted); margin: 0 0 0.6rem 0; }
 
   .mini-card a {
     font-size: 0.82rem;
@@ -369,8 +315,31 @@
   }
 
   /* ============================================
-     TIMELINE
+     VIDEO ADS
      ============================================ */
+  .video-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .video-card video {
+    display: block;
+    width: 100%;
+    max-height: 520px;
+    background: var(--ink);
+    border-radius: 3px;
+  }
+
+  .video-card figcaption {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin-top: 0.6rem;
+  }
+
+  .video-card { margin: 0; }
+
   .timeline-item {
     display: grid;
     grid-template-columns: 140px 1fr;
@@ -391,9 +360,6 @@
   .timeline-item .org { color: var(--text-muted); font-size: 0.92rem; margin-bottom: 0.4rem; }
   .timeline-item p.body-text { color: var(--text-body); font-size: 0.95rem; }
 
-  /* ============================================
-     CERTIFICATIONS
-     ============================================ */
   .cert-list { list-style: none; padding: 0; margin: 1rem 0 0 0; }
   .cert-list li {
     display: flex;
@@ -408,9 +374,6 @@
   .cert-name { font-weight: 600; }
   .cert-status { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-muted); }
 
-  /* ============================================
-     CONTACT / FOOTER
-     ============================================ */
   .contact-block {
     display: flex;
     flex-wrap: wrap;
@@ -427,30 +390,14 @@
     cursor: pointer;
   }
 
-  .contact-block .email-note {
-    font-family: var(--font-mono);
-    font-size: 0.9rem;
-    color: var(--text-muted);
-  }
+  footer { padding: 2.5rem 3rem 4rem; color: var(--text-muted); font-size: 0.85rem; }
 
-  footer {
-    padding: 2.5rem 3rem 4rem;
-    color: var(--text-muted);
-    font-size: 0.85rem;
-  }
-
-  /* One deliberate motion moment */
-  .hero-anim {
-    animation: rise 0.6s ease-out both;
-  }
+  .hero-anim { animation: rise 0.6s ease-out both; }
   @keyframes rise {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* ============================================
-     MOBILE
-     ============================================ */
   .menu-toggle { display: none; }
 
   @media (max-width: 860px) {
@@ -496,6 +443,7 @@
     main { padding: 0 1.25rem; }
     .skills-grid { grid-template-columns: 1fr; }
     .mini-grid { grid-template-columns: 1fr; }
+    .video-grid { grid-template-columns: 1fr; }
     .timeline-item { grid-template-columns: 1fr; gap: 0.3rem; }
     footer { padding: 2rem 1.25rem 3rem; }
   }
@@ -530,6 +478,7 @@
           <li><a href="#about" class="nav-link">About</a></li>
           <li><a href="#skills" class="nav-link">Skills</a></li>
           <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#video-ads" class="nav-link">Video ads</a></li>
           <li><a href="#experience" class="nav-link">Experience</a></li>
           <li><a href="#education" class="nav-link">Education</a></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
@@ -645,6 +594,7 @@
             <span class="pill">Predictive modelling</span>
             <span class="pill">Pandas / scikit-learn</span>
             <span class="pill">WhatsApp API integration</span>
+            <span class="pill">AI video generation</span>
           </div>
         </div>
 
@@ -682,6 +632,29 @@
           <a href="https://world-cup-2026-bets.streamlit.app/" target="_blank" rel="noopener">Try it live</a>
           <a href="https://github.com/RrePitso/World-Cup-2026-Bets" target="_blank" rel="noopener">View code</a>
         </div>
+      </div>
+
+      <!-- NEW: EmotiCare -->
+      <div class="project is-testing">
+        <div class="project-head">
+          <h3>EmotiCare</h3>
+          <span class="live-tag is-testing"><span class="status-dot is-testing"></span>Android app · in testing</span>
+        </div>
+        <p class="desc">
+          A mental wellness app for reflective journaling and emotional support.
+          It combines a daily check-in, a private journal with pattern tracking,
+          grounding and breathing tools, and an AI companion powered by the Gemini
+          API you can talk to when things feel heavy. Crisis resources and a clear
+          "not a clinical tool" notice are built in.
+        </p>
+        <div class="stack">Gemini API · Android · Journaling · AI chat</div>
+        <div class="links">
+          <a href="https://drive.google.com/file/d/1jZzSyzageM6t6EMokT4QQ5XFTKn1ykWe/view?usp=drivesdk" target="_blank" rel="noopener">Download the Android app (APK)</a>
+        </div>
+        <p class="note">
+          Android only for now. You may need to allow installs from unknown sources,
+          and Google Drive may show a scan warning for APK files.
+        </p>
       </div>
 
       <div class="project">
@@ -734,6 +707,32 @@
         </div>
       </div>
 
+    </section>
+
+    <!-- NEW: VIDEO ADS -->
+    <section id="video-ads">
+      <span class="eyebrow">Video ads</span>
+      <h2>Ads I generated with AI</h2>
+      <p>
+        Short promo videos I created with AI video tools. Good for showing how I
+        market what I build, not just how I build it.
+      </p>
+
+      <div class="video-grid">
+        <figure class="video-card">
+          <video controls playsinline preload="metadata" src="I_want_to_do_a_little_animated.mp4">
+            Your browser can't play this video.
+          </video>
+          <figcaption>Animated promo ad</figcaption>
+        </figure>
+
+        <figure class="video-card">
+          <video controls playsinline preload="metadata" src="I_want_to_create_an_add_that.mp4">
+            Your browser can't play this video.
+          </video>
+          <figcaption>Promo ad</figcaption>
+        </figure>
+      </div>
     </section>
 
     <!-- EXPERIENCE -->
@@ -805,12 +804,8 @@
         what your team is working on, I'd like to hear from you.
       </p>
       <div class="contact-block">
-        <!-- Primary mailto link (opens default mail client). We add an explicit click handler below to avoid SPA/router interception -->
         <a id="emailLink" href="mailto:ofentsepitsopop@gmail.com" aria-label="Email Ofentse Pitso at ofentsepitsopop@gmail.com">ofentsepitsopop@gmail.com</a>
-
-        <!-- Optional: open Gmail compose in a new tab (useful when no mail client is configured) -->
         <a id="gmailCompose" href="https://mail.google.com/mail/?view=cm&fs=1&to=ofentsepitsopop@gmail.com" target="_blank" rel="noopener" aria-label="Compose email in Gmail (opens new tab)">Compose in Gmail</a>
-
         <a href="https://github.com/RrePitso" target="_blank" rel="noopener">github.com/RrePitso</a>
         <a href="https://linkedin.com/in/ofentse-pitso" target="_blank" rel="noopener">linkedin.com/in/ofentse-pitso</a>
       </div>
@@ -824,26 +819,17 @@
 </footer>
 
 <script>
-  // ============================================
-  // 1. Mobile menu toggle
-  // ============================================
   (function () {
     const sidebar = document.getElementById('sidebar');
     const menuToggle = document.getElementById('menuToggle');
     if (menuToggle && sidebar) {
-      menuToggle.addEventListener('click', () => {
-        sidebar.classList.toggle('open');
-      });
+      menuToggle.addEventListener('click', () => sidebar.classList.toggle('open'));
     }
 
-    // Close the mobile menu after a nav link is tapped
     document.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', () => sidebar && sidebar.classList.remove('open'));
     });
 
-    // ============================================
-    // 2. Highlight current section with IntersectionObserver
-    // ============================================
     const sections = document.querySelectorAll('main section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
 
@@ -862,28 +848,24 @@
       sections.forEach(section => observer.observe(section));
     }
 
-    // ============================================
-    // 3. Mailto handling
-    // ============================================
-    // Problem: some routers or JS can intercept anchor clicks and prevent the
-    // default browser behavior for mailto: links. We add a small handler that
-    // forces navigation to the mailto: URL. We do NOT open mailto in a new tab
-    // (browsers show a blank page when mailto: is opened in a new tab).
     const emailLink = document.getElementById('emailLink');
     if (emailLink) {
       emailLink.addEventListener('click', (e) => {
-        // Prevent any router or other code from hijacking the click.
         e.preventDefault();
-        // Force navigation to the mailto: URL on the current tab — this opens the user's
-        // default mail client (if configured).
         window.location.href = emailLink.getAttribute('href');
       });
     }
 
-    // Optional: allow opening Gmail compose (already a normal link with target=_blank).
-    // No JS required for that link, it's provided as an explicit alternative.
+    // Only one video plays at a time
+    const videos = document.querySelectorAll('.video-card video');
+    videos.forEach(v => {
+      v.addEventListener('play', () => {
+        videos.forEach(other => { if (other !== v) other.pause(); });
+      });
+    });
   })();
 </script>
 
 </body>
 </html>
+
