@@ -314,15 +314,14 @@
     border-bottom: 1px solid var(--gold);
   }
 
-  /* ============================================
-     VIDEO ADS
-     ============================================ */
   .video-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
     margin-top: 1.5rem;
   }
+
+  .video-card { margin: 0; }
 
   .video-card video {
     display: block;
@@ -337,8 +336,6 @@
     color: var(--text-muted);
     margin-top: 0.6rem;
   }
-
-  .video-card { margin: 0; }
 
   .timeline-item {
     display: grid;
@@ -523,8 +520,8 @@
             <span class="label">deployed Streamlit apps</span>
           </div>
           <div class="stat">
-            <span class="num">2</span>
-            <span class="label">Microsoft certifications — DP-900 & DP-700</span>
+            <span class="num">3</span>
+            <span class="label">certifications — DP-900, DP-700 & Google AI Essentials</span>
           </div>
         </div>
       </div>
@@ -569,6 +566,7 @@
             <span class="pill">JavaScript</span>
             <span class="pill">Python</span>
             <span class="pill">React</span>
+            <span class="pill">Next.js</span>
             <span class="pill">Node.js / Express</span>
             <span class="pill">SQL</span>
           </div>
@@ -578,6 +576,7 @@
           <h3>Platforms & tools</h3>
           <div class="pill-row">
             <span class="pill">Firebase</span>
+            <span class="pill">Supabase</span>
             <span class="pill">Microsoft Azure</span>
             <span class="pill">Google AI Studio</span>
             <span class="pill">Gemini API</span>
@@ -634,7 +633,7 @@
         </div>
       </div>
 
-      <!-- NEW: EmotiCare -->
+      <!-- EmotiCare -->
       <div class="project is-testing">
         <div class="project-head">
           <h3>EmotiCare</h3>
@@ -709,7 +708,7 @@
 
     </section>
 
-    <!-- NEW: VIDEO ADS -->
+    <!-- VIDEO ADS -->
     <section id="video-ads">
       <span class="eyebrow">Video ads</span>
       <h2>Ads I generated with AI</h2>
@@ -739,6 +738,27 @@
     <section id="experience">
       <span class="eyebrow">Experience</span>
       <h2>Where I've worked</h2>
+
+      <!-- NEW: CAPACITI -->
+      <div class="timeline-item">
+        <div class="when">Sep 2026</div>
+        <div>
+          <h3>Software Developer</h3>
+          <div class="org">CAPACITI Tech Accelerator — AI Productivity Assistant</div>
+          <p class="body-text">
+            Selected for CAPACITI's intensive one-week Tech Accelerator, covering
+            enterprise IT business principles and applied AI integration. Built a
+            full-stack, role-based productivity platform (Next.js, Supabase,
+            Tailwind CSS and LLM APIs) that automates cohort metrics,
+            administrative communication and task scheduling. I worked with an AI
+            coding agent throughout, directing it to draft the code and then
+            reviewing, testing and verifying every change before it shipped.
+            Earned the Google AI Essentials Professional Certification and
+            completed a SAQA-accredited assessment (Unit Standard 114050) in the
+            same week.
+          </p>
+        </div>
+      </div>
 
       <div class="timeline-item">
         <div class="when">2024 — Present</div>
@@ -790,6 +810,10 @@
         <li>
           <span class="cert-name">Microsoft Fabric Data Engineer Associate (DP-700)</span>
           <span class="cert-status">Certified — Sept 2026</span>
+        </li>
+        <li>
+          <span class="cert-name">Google AI Essentials Professional Certification</span>
+          <span class="cert-status">Certified — Sept 2026 (via CAPACITI)</span>
         </li>
       </ul>
     </section>
@@ -868,4 +892,3 @@
 
 </body>
 </html>
-
