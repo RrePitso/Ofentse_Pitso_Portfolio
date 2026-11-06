@@ -3,892 +3,267 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Ofentse Phanuel Pitso — Software Developer & Builder</title>
-<meta name="description" content="Ofentse Pitso — final-year Computer Science student, founder of iDelivery, and builder of AI-powered software for real African problems." />
-
+<title>Ofentse Pitso | Software Developer, Web & AI</title>
+<meta name="description" content="Ofentse Pitso, Computer Science graduate. Full-stack web developer, AI and data builder, founder of iDelivery." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --ink:        #12181F;
-    --paper:      #EDEEEF;
-    --paper-2:    #E2E4E6;
-    --gold:       #E3A73B;
-    --teal:       #2F6F5E;
-    --text-body:  #262C33;
-    --text-muted: #5B6169;
-    --border:     #D4D6D8;
-    --border-dark:#2A323C;
-
-    --font-display: 'Newsreader', serif;
-    --font-body: 'IBM Plex Sans', sans-serif;
-    --font-mono: 'IBM Plex Mono', monospace;
-
-    --max-line: 62ch;
-    --sidebar-width: 280px;
-  }
-
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    * { animation: none !important; transition: none !important; }
-  }
-
-  body {
-    margin: 0;
-    background: var(--paper);
-    color: var(--text-body);
-    font-family: var(--font-body);
-    font-size: 17px;
-    line-height: 1.6;
-  }
-
-  a { color: inherit; }
-
-  h1, h2, h3 {
-    font-family: var(--font-display);
-    font-weight: 500;
-    line-height: 1.15;
-    margin: 0 0 0.5em 0;
-  }
-
-  p { max-width: var(--max-line); }
-
-  section { padding: 4.5rem 0; border-bottom: 1px solid var(--border); }
-  section:last-of-type { border-bottom: none; }
-
-  .eyebrow {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    margin-bottom: 0.75rem;
-    display: block;
-  }
-
-  .layout {
-    display: grid;
-    grid-template-columns: var(--sidebar-width) 1fr;
-    min-height: 100vh;
-  }
-
-  .sidebar {
-    background: var(--ink);
-    color: #E9ECEF;
-    padding: 2.5rem 2rem;
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  .avatar {
-    width: 52px;
-    height: 52px;
-    object-fit: cover;
-    border: 2px solid var(--gold);
-    flex-shrink: 0;
-  }
-
-  .sidebar .name {
-    font-family: var(--font-display);
-    font-size: 1.3rem;
-    font-style: italic;
-    margin-bottom: 0.15rem;
-  }
-
-  .sidebar .role {
-    font-size: 0.85rem;
-    color: #9BA3AD;
-    margin-bottom: 2.5rem;
-  }
-
-  .status-line {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    color: #9BA3AD;
-    margin-bottom: 2rem;
-  }
-
-  .status-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--teal);
-    box-shadow: 0 0 0 3px rgba(47, 111, 94, 0.25);
-  }
-
-  .status-dot.is-testing {
-    background: var(--gold);
-    box-shadow: 0 0 0 3px rgba(227, 167, 59, 0.25);
-  }
-
-  .sidebar nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.9rem;
-  }
-
-  .sidebar nav a {
-    text-decoration: none;
-    font-size: 0.95rem;
-    color: #C9CED4;
-    border-left: 2px solid transparent;
-    padding-left: 0.75rem;
-    transition: color 0.15s, border-color 0.15s;
-  }
-
-  .sidebar nav a:hover,
-  .sidebar nav a.active {
-    color: #fff;
-    border-left-color: var(--gold);
-  }
-
-  .sidebar .socials {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    font-size: 0.85rem;
-  }
-
-  .sidebar .socials a { text-decoration: none; color: #9BA3AD; }
-  .sidebar .socials a:hover { color: #fff; }
-
-  main { padding: 0 3rem; max-width: 900px; }
-
-  .hero { padding-top: 5rem; border-bottom: 1px solid var(--border); }
-
-  .hero h1 {
-    font-size: clamp(2.1rem, 4vw, 3rem);
-    font-weight: 500;
-    max-width: 16ch;
-  }
-
-  .hero .lede {
-    font-size: 1.15rem;
-    color: var(--text-muted);
-    max-width: 48ch;
-    margin-bottom: 2rem;
-  }
-
-  .hero-stats {
-    display: flex;
-    gap: 2.5rem;
-    flex-wrap: wrap;
-    margin-top: 2.5rem;
-  }
-
-  .stat .num { font-family: var(--font-display); font-size: 1.9rem; display: block; }
-  .stat .label { font-size: 0.82rem; color: var(--text-muted); }
-
-  .cta-row { display: flex; gap: 1rem; margin-top: 2.25rem; flex-wrap: wrap; }
-
-  .btn {
-    display: inline-block;
-    padding: 0.7rem 1.4rem;
-    text-decoration: none;
-    font-size: 0.92rem;
-    font-weight: 600;
-    border-radius: 3px;
-  }
-
-  .btn-primary { background: var(--gold); color: var(--ink); }
-  .btn-primary:hover { background: #d1962f; }
-
-  .btn-secondary { background: transparent; color: var(--ink); border: 1px solid var(--border-dark); }
-  .btn-secondary:hover { background: var(--paper-2); }
-
-  .skills-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2.5rem;
-    margin-top: 1.5rem;
-  }
-
-  .skill-group h3 {
-    font-size: 1rem;
-    font-family: var(--font-body);
-    font-weight: 700;
-    margin-bottom: 0.9rem;
-  }
-
-  .pill-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-
-  .pill {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    background: var(--paper-2);
-    border: 1px solid var(--border);
-    padding: 0.3rem 0.65rem;
-    border-radius: 3px;
-  }
-
-  .project {
-    border-left: 3px solid var(--border-dark);
-    padding: 0.25rem 0 0.25rem 1.5rem;
-    margin-bottom: 2.75rem;
-  }
-
-  .project.is-live { border-left-color: var(--teal); }
-  .project.is-testing { border-left-color: var(--gold); }
-
-  .project-head {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-
-  .project h3 { font-size: 1.3rem; margin-bottom: 0.35rem; }
-
-  .live-tag {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--teal);
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    white-space: nowrap;
-  }
-
-  .live-tag.is-testing { color: #8a5f0f; }
-
-  .project p.desc { color: var(--text-muted); margin-bottom: 0.9rem; }
-
-  .project .stack {
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    color: var(--text-muted);
-    margin-bottom: 0.9rem;
-  }
-
-  .project .links a {
-    text-decoration: none;
-    font-size: 0.88rem;
-    font-weight: 600;
-    color: var(--ink);
-    margin-right: 1.25rem;
-    border-bottom: 1px solid var(--gold);
-  }
-
-  .project .note {
-    font-size: 0.82rem;
-    color: var(--text-muted);
-    margin-top: 0.75rem;
-  }
-
-  .mini-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin-top: 1rem;
-  }
-
-  .mini-card { border: 1px solid var(--border); background: var(--paper-2); padding: 1rem 1.15rem; }
-
-  .mini-card h4 {
-    font-family: var(--font-body);
-    font-size: 0.95rem;
-    font-weight: 700;
-    margin: 0 0 0.35rem 0;
-  }
-
-  .mini-card p { font-size: 0.85rem; color: var(--text-muted); margin: 0 0 0.6rem 0; }
-
-  .mini-card a {
-    font-size: 0.82rem;
-    font-weight: 600;
-    text-decoration: none;
-    border-bottom: 1px solid var(--gold);
-  }
-
-  .video-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    margin-top: 1.5rem;
-  }
-
-  .video-card { margin: 0; }
-
-  .video-card video {
-    display: block;
-    width: 100%;
-    max-height: 520px;
-    background: var(--ink);
-    border-radius: 3px;
-  }
-
-  .video-card figcaption {
-    font-size: 0.88rem;
-    color: var(--text-muted);
-    margin-top: 0.6rem;
-  }
-
-  .timeline-item {
-    display: grid;
-    grid-template-columns: 140px 1fr;
-    gap: 1.5rem;
-    padding: 1.25rem 0;
-    border-top: 1px solid var(--border);
-  }
-  .timeline-item:first-child { border-top: none; }
-
-  .timeline-item .when {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    padding-top: 0.2rem;
-  }
-
-  .timeline-item h3 { font-size: 1.05rem; margin-bottom: 0.2rem; }
-  .timeline-item .org { color: var(--text-muted); font-size: 0.92rem; margin-bottom: 0.4rem; }
-  .timeline-item p.body-text { color: var(--text-body); font-size: 0.95rem; }
-
-  .cert-list { list-style: none; padding: 0; margin: 1rem 0 0 0; }
-  .cert-list li {
-    display: flex;
-    justify-content: space-between;
-    padding: 0.9rem 0;
-    border-top: 1px solid var(--border);
-    align-items: baseline;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-  .cert-list li:first-child { border-top: none; }
-  .cert-name { font-weight: 600; }
-  .cert-status { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-muted); }
-
-  .contact-block {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-top: 1.5rem;
-    align-items: center;
-  }
-
-  .contact-block a {
-    text-decoration: none;
-    font-weight: 600;
-    border-bottom: 1px solid var(--gold);
-    color: var(--ink);
-    cursor: pointer;
-  }
-
-  footer { padding: 2.5rem 3rem 4rem; color: var(--text-muted); font-size: 0.85rem; }
-
-  .hero-anim { animation: rise 0.6s ease-out both; }
-  @keyframes rise {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .menu-toggle { display: none; }
-
-  @media (max-width: 860px) {
-    .layout { grid-template-columns: 1fr; }
-
-    .sidebar {
-      position: sticky;
-      top: 0;
-      height: auto;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 1.25rem;
-      z-index: 20;
-    }
-
-    .sidebar .name { font-size: 1.15rem; margin-bottom: 0; }
-    .sidebar .role, .sidebar .status-line, .sidebar .socials { display: none; }
-
-    .sidebar nav { display: none; }
-    .sidebar.open nav {
-      display: block;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background: var(--ink);
-      padding: 1.25rem;
-    }
-    .sidebar.open nav ul { gap: 1.1rem; }
-
-    .menu-toggle {
-      display: block;
-      background: none;
-      border: 1px solid #3A4552;
-      color: #E9ECEF;
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      padding: 0.4rem 0.7rem;
-      border-radius: 3px;
-    }
-
-    main { padding: 0 1.25rem; }
-    .skills-grid { grid-template-columns: 1fr; }
-    .mini-grid { grid-template-columns: 1fr; }
-    .video-grid { grid-template-columns: 1fr; }
-    .timeline-item { grid-template-columns: 1fr; gap: 0.3rem; }
-    footer { padding: 2rem 1.25rem 3rem; }
-  }
+:root{--ink:#12181F;--paper:#EDEEEF;--paper-2:#E2E4E6;--gold:#E3A73B;--teal:#2F6F5E;--body:#262C33;--muted:#555B63;--border:#D4D6D8;--f-d:'Newsreader',Georgia,serif;--f-b:'IBM Plex Sans',system-ui,sans-serif;--f-m:'IBM Plex Mono',monospace}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--paper);color:var(--body);font:17px/1.6 var(--f-b)}
+a{color:inherit}a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+h1,h2,h3{font-family:var(--f-d);font-weight:500;line-height:1.15;margin:0 0 .5em}
+p{max-width:62ch}
+section{padding:4rem 0;border-bottom:1px solid var(--border)}section:last-of-type{border:0}
+.eyebrow{font:.8rem var(--f-m);color:var(--muted);display:block;margin-bottom:.7rem}
+.layout{display:grid;grid-template-columns:280px 1fr;min-height:100vh}
+.sidebar{background:var(--ink);color:#E9ECEF;padding:2.5rem 2rem;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;justify-content:space-between}
+.who{display:flex;align-items:center;gap:.8rem;margin-bottom:1.5rem}
+.avatar{width:52px;height:52px;object-fit:cover;border:2px solid var(--gold)}
+.name{font:italic 1.3rem var(--f-d)}.role{font-size:.85rem;color:#9BA3AD}
+.status{display:flex;gap:.5rem;align-items:center;font:.78rem var(--f-m);color:#9BA3AD;margin-bottom:2rem}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 3px rgba(47,111,94,.25);flex:none}
+.dot.gold{background:var(--gold);box-shadow:0 0 0 3px rgba(227,167,59,.25)}
+nav ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.85rem}
+nav a{text-decoration:none;font-size:.95rem;color:#C9CED4;border-left:2px solid transparent;padding-left:.75rem}
+nav a:hover,nav a.active{color:#fff;border-left-color:var(--gold)}
+.socials{display:flex;flex-direction:column;gap:.5rem;font-size:.85rem}.socials a{text-decoration:none;color:#9BA3AD}.socials a:hover{color:#fff}
+main{padding:0 3rem;max-width:900px}
+.hero{padding-top:5rem}.hero h1{font-size:clamp(2.1rem,4vw,3rem);max-width:17ch}
+.lede{font-size:1.12rem;color:var(--muted);max-width:50ch}
+.cta{display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap}
+.btn{display:inline-block;padding:.7rem 1.4rem;text-decoration:none;font-size:.92rem;font-weight:600;border-radius:3px;border:1px solid var(--ink)}
+.btn.p{background:var(--gold);border-color:var(--gold);color:var(--ink)}.btn.p:hover{background:#d1962f}.btn.s:hover{background:var(--paper-2)}
+.stats{display:flex;gap:2.5rem;flex-wrap:wrap;margin-top:2.5rem}
+.stat b{font:500 1.9rem var(--f-d);display:block}.stat span{font-size:.82rem;color:var(--muted)}
+.fit{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem}
+.card{border:1px solid var(--border);background:var(--paper-2);padding:1rem 1.15rem}
+.card h3,.card h4{font:700 .95rem var(--f-b);margin:0 0 .35rem}.card p{font-size:.88rem;color:var(--muted);margin:0 0 .6rem}
+.card a,.links a{font-size:.85rem;font-weight:600;text-decoration:none;border-bottom:1px solid var(--gold);margin-right:1rem}
+.skills{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:1.5rem}
+.skills h3{font:700 1rem var(--f-b);margin-bottom:.8rem}
+.pills{display:flex;flex-wrap:wrap;gap:.5rem}
+.pill{font:.8rem var(--f-m);background:var(--paper-2);border:1px solid var(--border);padding:.3rem .65rem;border-radius:3px}
+.project{border-left:3px solid var(--ink);padding:.25rem 0 .25rem 1.5rem;margin-bottom:2.5rem}
+.project.live{border-color:var(--teal)}.project.test{border-color:var(--gold)}
+.head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.project h3{font-size:1.3rem;margin-bottom:.35rem}
+.tag{font:.75rem var(--f-m);color:var(--teal);display:flex;align-items:center;gap:.4rem}.tag.gold{color:#8a5f0f}
+.desc{color:var(--muted);margin:0 0 .8rem}.stack{font:.78rem var(--f-m);color:var(--muted);margin-bottom:.8rem}
+.note{font-size:.82rem;color:var(--muted);margin-top:.7rem}
+.mini{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem}
+.videos{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.5rem}
+.videos figure{margin:0}.videos video{display:block;width:100%;max-height:520px;background:var(--ink);border-radius:3px}
+.videos figcaption{font-size:.88rem;color:var(--muted);margin-top:.6rem}
+.row{display:grid;grid-template-columns:150px 1fr;gap:1.5rem;padding:1.25rem 0;border-top:1px solid var(--border)}.row:first-of-type{border:0}
+.when{font:.8rem var(--f-m);color:var(--muted);padding-top:.2rem}
+.row h3{font-size:1.1rem;margin-bottom:.2rem}.org{color:var(--muted);font-size:.92rem;margin-bottom:.4rem}.row p{font-size:.95rem;margin:0 0 .4rem}
+.certs{list-style:none;padding:0;margin:1rem 0 0}
+.certs li{display:flex;justify-content:space-between;gap:.5rem;flex-wrap:wrap;padding:.9rem 0;border-top:1px solid var(--border)}.certs li:first-child{border:0}
+.certs b{font-weight:600}.certs span{font:.78rem var(--f-m);color:var(--muted)}
+.contact{display:flex;flex-wrap:wrap;gap:1rem 1.5rem;margin-top:1.5rem}
+.contact a{text-decoration:none;font-weight:600;border-bottom:1px solid var(--gold);color:var(--ink)}
+footer{padding:2.5rem 3rem 4rem;color:var(--muted);font-size:.85rem}
+.menu{display:none}
+@media(max-width:860px){
+.layout{grid-template-columns:1fr}
+.sidebar{height:auto;flex-direction:row;align-items:center;justify-content:space-between;padding:1rem 1.25rem;z-index:20}
+.who{margin:0}.role,.status,.socials{display:none}
+nav{display:none}.sidebar.open nav{display:block;position:absolute;top:100%;left:0;right:0;background:var(--ink);padding:1.25rem}
+.menu{display:block;background:none;border:1px solid #3A4552;color:#E9ECEF;font:.8rem var(--f-m);padding:.4rem .7rem;border-radius:3px}
+main{padding:0 1.25rem}.fit,.skills,.mini,.videos{grid-template-columns:1fr}
+.row{grid-template-columns:1fr;gap:.3rem}footer{padding:2rem 1.25rem 3rem}}
 </style>
 </head>
 <body>
-
 <div class="layout">
-
-  <!-- SIDEBAR -->
-  <aside class="sidebar" id="sidebar">
-    <div>
-      <div style="display:flex; align-items:center; justify-content:space-between;">
-        <div style="display:flex; align-items:center; gap:0.8rem;">
-          <img src="Profile.jpg" alt="Ofentse Pitso" class="avatar" />
-          <div>
-            <div class="name">Ofentse Pitso</div>
-            <div class="role">Software Developer & Builder</div>
-          </div>
-        </div>
-        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">Menu</button>
-      </div>
-
-      <div class="status-line">
-        <span class="status-dot"></span>
-        Open to AI / software engineering roles
-      </div>
-
-      <nav>
-        <ul>
-          <li><a href="#home" class="nav-link">Home</a></li>
-          <li><a href="#about" class="nav-link">About</a></li>
-          <li><a href="#skills" class="nav-link">Skills</a></li>
-          <li><a href="#projects" class="nav-link">Projects</a></li>
-          <li><a href="#video-ads" class="nav-link">Video ads</a></li>
-          <li><a href="#experience" class="nav-link">Experience</a></li>
-          <li><a href="#education" class="nav-link">Education</a></li>
-          <li><a href="#contact" class="nav-link">Contact</a></li>
-        </ul>
-      </nav>
+<aside class="sidebar" id="sidebar">
+  <div>
+    <div class="who">
+      <img src="Profile.jpg" alt="Portrait of Ofentse Pitso" class="avatar" />
+      <div><div class="name">Ofentse Pitso</div><div class="role">Web, software and AI developer</div></div>
     </div>
+    <div class="status"><span class="dot"></span>Open to web, software, AI and data roles</div>
+    <nav><ul>
+      <li><a href="#home" class="nl">Home</a></li>
+      <li><a href="#about" class="nl">About</a></li>
+      <li><a href="#skills" class="nl">Skills</a></li>
+      <li><a href="#projects" class="nl">Projects</a></li>
+      <li><a href="#video-ads" class="nl">Video ads</a></li>
+      <li><a href="#experience" class="nl">Experience</a></li>
+      <li><a href="#education" class="nl">Education</a></li>
+      <li><a href="#contact" class="nl">Contact</a></li>
+    </ul></nav>
+  </div>
+  <button class="menu" id="menu" aria-label="Toggle menu">Menu</button>
+  <div class="socials">
+    <a href="https://github.com/RrePitso" target="_blank" rel="noopener">GitHub, RrePitso</a>
+    <a href="https://linkedin.com/in/ofentse-pitso" target="_blank" rel="noopener">LinkedIn, ofentse-pitso</a>
+  </div>
+</aside>
 
-    <div class="socials">
-      <a href="https://github.com/RrePitso" target="_blank" rel="noopener">GitHub — RrePitso</a>
-      <a href="https://linkedin.com/in/ofentse-pitso" target="_blank" rel="noopener">LinkedIn — ofentse-pitso</a>
-    </div>
-  </aside>
+<main>
+<section class="hero" id="home">
+  <span class="eyebrow">BSc Computer Science (Mathematics), University of Fort Hare</span>
+  <h1>I build software that solves problems where I live, then ship it.</h1>
+  <p class="lede">I work across the web, data and AI. I build the interface, the back end and the pipeline behind it, and I check my work before anyone depends on it. Most of what I have made is live, so you can try it.</p>
+  <div class="cta">
+    <a class="btn p" href="#projects">See my projects</a>
+    <a class="btn s" href="CV-Ofentse-Pitso.pdf" download>Download CV</a>
+  </div>
+  <div class="stats">
+    <div class="stat"><b>70+</b><span>public repositories</span></div>
+    <div class="stat"><b>7</b><span>deployed Streamlit apps</span></div>
+    <div class="stat"><b>3</b><span>certifications, DP-900, DP-700, Google AI Essentials</span></div>
+  </div>
+  <div class="fit">
+    <div class="card"><h3>Hiring for web or full-stack?</h3><p>Start with iDelivery, the P&amp;C Solutions work and CAPACITI.</p><a href="#projects">Web projects</a></div>
+    <div class="card"><h3>Hiring for AI or data?</h3><p>Start with World Cup 2026, Email RAG, Khula and SpazaML.</p><a href="#projects">AI and data projects</a></div>
+  </div>
+</section>
 
-  <!-- MAIN CONTENT -->
-  <main>
+<section id="about">
+  <span class="eyebrow">About</span>
+  <h2>I would rather ship it than pitch it</h2>
+  <p>I like turning an idea into something people can use. That started with iDelivery, a delivery system I founded while still a student, and it runs through most of what I build: web apps, analytics tools and AI assistants that go from a rough idea to something deployed.</p>
+  <p>I work well with other people. On contract work I sit between the CEO, designers and clients, turn feedback into working features and keep everyone updated. When something breaks I trace it to the root cause and write the fix down so the next person can use it.</p>
+  <p>I learn a tool by shipping something with it. When I use an AI coding agent I review, test and verify every change before it goes live.</p>
+</section>
 
-    <!-- HOME / HERO -->
-    <section class="hero" id="home">
-      <div class="hero-anim">
-        <span class="eyebrow">Final-year BSc Computer Science, University of Fort Hare</span>
-        <h1>I build software that solves problems where I live, then ship it.</h1>
-        <p class="lede">
-          I'm a developer who prefers a working product over a polished slide deck.
-          Most of my public work lives in a set of deployed apps — analytics tools,
-          MLOps demos, and small business tools — each one picking a real, local
-          problem and building and shipping something that actually works, often
-          with AI baked into the core of it.
-        </p>
+<section id="skills">
+  <span class="eyebrow">Skills</span>
+  <h2>What I work with</h2>
+  <div class="skills">
+    <div><h3>Web and front end</h3><div class="pills"><span class="pill">HTML</span><span class="pill">CSS</span><span class="pill">JavaScript</span><span class="pill">TypeScript</span><span class="pill">React</span><span class="pill">Next.js</span><span class="pill">Tailwind CSS</span><span class="pill">Responsive design</span></div></div>
+    <div><h3>Back end and databases</h3><div class="pills"><span class="pill">Node.js / Express</span><span class="pill">Python</span><span class="pill">SQL</span><span class="pill">Supabase</span><span class="pill">Firebase</span><span class="pill">REST APIs / JSON</span><span class="pill">WhatsApp Business API</span></div></div>
+    <div><h3>AI and data</h3><div class="pills"><span class="pill">LLM APIs / tool calling</span><span class="pill">RAG</span><span class="pill">LangChain</span><span class="pill">Embeddings</span><span class="pill">Pandas / NumPy</span><span class="pill">scikit-learn</span><span class="pill">Streamlit</span></div></div>
+    <div><h3>Cloud, tools and ways of working</h3><div class="pills"><span class="pill">Azure</span><span class="pill">Microsoft Fabric</span><span class="pill">Linux servers</span><span class="pill">Git / GitHub Actions</span><span class="pill">Testing and debugging</span><span class="pill">Technical documentation</span><span class="pill">Working with clients</span></div></div>
+  </div>
+</section>
 
-        <div class="cta-row">
-          <a class="btn btn-primary" href="#projects">See my projects</a>
-          <a class="btn btn-secondary" href="CV-Ofentse-Pitso.pdf" download>Download CV</a>
-        </div>
+<section id="projects">
+  <span class="eyebrow">Projects</span>
+  <h2>Things I have shipped</h2>
 
-        <div class="hero-stats">
-          <div class="stat">
-            <span class="num">70+</span>
-            <span class="label">public repositories</span>
-          </div>
-          <div class="stat">
-            <span class="num">7</span>
-            <span class="label">deployed Streamlit apps</span>
-          </div>
-          <div class="stat">
-            <span class="num">3</span>
-            <span class="label">certifications — DP-900, DP-700 & Google AI Essentials</span>
-          </div>
-        </div>
-      </div>
-    </section>
+  <div class="project live">
+    <div class="head"><h3>iDelivery</h3><span class="tag"><span class="dot"></span>Live</span></div>
+    <p class="desc">A WhatsApp Business API delivery coordination system for the University of Fort Hare community. The customer flow is live and handles real conversations. The driver flow is tested on a separate number, and automated restaurant notifications are next.</p>
+    <div class="stack">Node.js, WhatsApp Business API, Google Sheets</div>
+    <div class="links"><a href="https://wa.me/27758399834" target="_blank" rel="noopener">Try the customer bot on WhatsApp</a></div>
+    <p class="note">This is a live service. Please send test messages only and do not place an order.</p>
+  </div>
 
-    <!-- ABOUT -->
-    <section id="about">
-      <span class="eyebrow">About me</span>
-      <h2>I'd rather ship it than pitch it</h2>
-      <p>
-        I like turning an idea into something people can actually click on. That
-        instinct started with iDelivery, a hyperlocal delivery platform I founded
-        while still a student, and it's carried through into most of what I build
-        now: analytics tools, MLOps demos, and small business tools that go from a
-        notebook or a rough idea to a deployed, working app.
-      </p>
-      <p>
-        A good example is my World Cup 2026 analytics project — it began as a
-        Google Colab notebook with a Random Forest model, and grew into a full
-        Dixon-Coles Poisson goal model with calibrated probabilities, a Streamlit
-        dashboard, CI/CD, and a LangChain + Gemini agent that answers questions
-        over the match data.
-      </p>
-      <p>
-        I'm entrepreneurially minded by default: I'd rather learn a tool by shipping
-        something with it than by reading about it. Most of what I know about
-        large language models, RAG pipelines, and API integration, I learned by
-        building products that needed them.
-      </p>
-    </section>
+  <div class="project live">
+    <div class="head"><h3>World Cup 2026 Analytics</h3><span class="tag"><span class="dot"></span>Deployed</span></div>
+    <p class="desc">An end-to-end machine learning pipeline trained on 50,000+ international matches. It reaches 59.4% three-class accuracy on held-out 2018 and 2022 World Cup data against a 33% random baseline, with calibrated probabilities, a Streamlit dashboard, automated retraining and a LangChain and Gemini Match Intel Agent. When a mid-migration Microsoft Fabric change broke production authentication, I traced the cause, rebuilt the secrets handling and documented the fix.</p>
+    <div class="stack">Python, scikit-learn, LangChain, ChromaDB, Streamlit, GitHub Actions, Microsoft Fabric</div>
+    <div class="links"><a href="https://world-cup-2026-bets.streamlit.app/" target="_blank" rel="noopener">Try it live</a><a href="https://github.com/RrePitso/World-Cup-2026-Bets" target="_blank" rel="noopener">View code</a></div>
+  </div>
 
-    <!-- SKILLS -->
-    <section id="skills">
-      <span class="eyebrow">Skills</span>
-      <h2>What I actually work with</h2>
+  <div class="project">
+    <div class="head"><h3>CAPACITI AI Productivity Assistant</h3></div>
+    <p class="desc">Built in one week at the CAPACITI Tech Accelerator: a role-based platform that automates cohort metrics, administrative communication and task scheduling. I directed an AI coding agent and reviewed, tested and verified every change before it shipped.</p>
+    <div class="stack">Next.js, Supabase, Tailwind CSS, LLM APIs</div>
+    <div class="links"><a href="https://github.com/RrePitso/Capaciti-AI-Productivity-Assistant" target="_blank" rel="noopener">View code</a></div>
+  </div>
 
-      <div class="skills-grid">
-        <div class="skill-group">
-          <h3>Languages & frameworks</h3>
-          <div class="pill-row">
-            <span class="pill">TypeScript</span>
-            <span class="pill">JavaScript</span>
-            <span class="pill">Python</span>
-            <span class="pill">React</span>
-            <span class="pill">Next.js</span>
-            <span class="pill">Node.js / Express</span>
-            <span class="pill">SQL</span>
-          </div>
-        </div>
+  <div class="project test">
+    <div class="head"><h3>Khula</h3><span class="tag gold"><span class="dot gold"></span>Android app, in testing</span></div>
+    <p class="desc">A mental wellness app for reflective journaling and emotional support. It has a daily check-in, a private journal with pattern tracking, grounding and breathing tools and an AI companion. If the primary Gemini model times out, a fallback model keeps the app responding. Private journal text is turned into embeddings for retrieval. Crisis resources and a clear notice that it is not a clinical tool are built in.</p>
+    <div class="stack">Android, Gemini API, embeddings and retrieval, provider fallback</div>
+    <div class="links"><a href="app-debug.apk" download>Download the Android app (APK)</a><a href="https://github.com/RrePitso/Emotional_Support_App_Android" target="_blank" rel="noopener">View code</a></div>
+    <p class="note">Android only. You may need to allow installs from unknown sources, and your phone may show a warning for APK files.</p>
+  </div>
 
-        <div class="skill-group">
-          <h3>Platforms & tools</h3>
-          <div class="pill-row">
-            <span class="pill">Firebase</span>
-            <span class="pill">Supabase</span>
-            <span class="pill">Microsoft Azure</span>
-            <span class="pill">Google AI Studio</span>
-            <span class="pill">Gemini API</span>
-            <span class="pill">Streamlit</span>
-            <span class="pill">Git / GitHub Actions</span>
-          </div>
-        </div>
+  <div class="project">
+    <div class="head"><h3>Email RAG</h3></div>
+    <p class="desc">An AI email triage prototype. The model classifies a message, looks up earlier messages from the same sender when it needs context, then picks a structured action: flag, draft a reply or archive. It runs on mock email data, and any drafted reply would need a person's approval before sending.</p>
+    <div class="stack">React, Node.js, Express, TypeScript, Gemini API</div>
+    <div class="links"><a href="https://github.com/RrePitso/Email_RAG" target="_blank" rel="noopener">View code</a></div>
+  </div>
 
-        <div class="skill-group">
-          <h3>AI & data</h3>
-          <div class="pill-row">
-            <span class="pill">RAG pipelines</span>
-            <span class="pill">LangChain</span>
-            <span class="pill">Predictive modelling</span>
-            <span class="pill">Pandas / scikit-learn</span>
-            <span class="pill">WhatsApp API integration</span>
-            <span class="pill">AI video generation</span>
-          </div>
-        </div>
+  <div class="project">
+    <div class="head"><h3>SpazaML</h3></div>
+    <p class="desc">A demand forecasting dashboard for small retailers. It prepares sales history, accounts for South African public holidays and turns forecasts into stock alerts. It uses simulated data.</p>
+    <div class="stack">Python, Pandas, forecasting, Streamlit</div>
+    <div class="links"><a href="https://spazaml-6rnex2xkxidhmv2xrqjxnn.streamlit.app/" target="_blank" rel="noopener">Open app</a><a href="https://github.com/RrePitso/SpazaML" target="_blank" rel="noopener">View code</a></div>
+  </div>
 
-        <div class="skill-group">
-          <h3>How I work</h3>
-          <div class="pill-row">
-            <span class="pill">Founder mindset</span>
-            <span class="pill">Ship-first learning</span>
-            <span class="pill">Explains the code, not just the demo</span>
-            <span class="pill">Comfortable owning a product end-to-end</span>
-          </div>
-        </div>
-      </div>
-    </section>
+  <h3 style="font:700 1.05rem var(--f-b)">More deployed work</h3>
+  <div class="mini">
+    <div class="card"><h4>Oasis Infobyte Data Science tasks</h4><p>Iris classification, unemployment analysis, car price prediction, spam detection and sales prediction, each documented with a demo video.</p><a href="https://github.com/RrePitso" target="_blank" rel="noopener">Browse on GitHub</a></div>
+    <div class="card"><h4>MLOps Churn Demo</h4><p>A churn prediction demo showing MLOps practices end to end.</p><a href="https://mlops-churn-demo.streamlit.app/" target="_blank" rel="noopener">Open app</a></div>
+    <div class="card"><h4>Collivery Estimator</h4><p>A delivery cost estimation tool.</p><a href="https://colliveryestimator.streamlit.app/" target="_blank" rel="noopener">Open app</a></div>
+    <div class="card"><h4>Department of Transport Pitch</h4><p>A demo application for a transport sector use case.</p><a href="https://departmentoftransportpitch.streamlit.app/" target="_blank" rel="noopener">Open app</a></div>
+    <div class="card"><h4>AccountingGit</h4><p>A lightweight bookkeeping tool.</p><a href="https://accountinggit-ea8jmzbbhbgswyxj9us4ff.streamlit.app/" target="_blank" rel="noopener">Open app</a></div>
+    <div class="card"><h4>Kokolobeng Demo</h4><p>A demo application.</p><a href="https://kokolobengdemo.streamlit.app/" target="_blank" rel="noopener">Open app</a></div>
+  </div>
+</section>
 
-    <!-- PROJECTS -->
-    <section id="projects">
-      <span class="eyebrow">Projects</span>
-      <h2>A few things I've shipped</h2>
+<section id="video-ads">
+  <span class="eyebrow">Video ads</span>
+  <h2>Promo videos I made with AI</h2>
+  <p>Short ads I created with AI video tools, to show I can help market what I build.</p>
+  <div class="videos">
+    <figure><video controls playsinline preload="metadata" src="I_want_to_do_a_little_animated.mp4">Your browser cannot play this video.</video><figcaption>Animated promo ad</figcaption></figure>
+    <figure><video controls playsinline preload="metadata" src="I_want_to_create_an_add_that.mp4">Your browser cannot play this video.</video><figcaption>Promo ad</figcaption></figure>
+  </div>
+</section>
 
-      <div class="project is-live">
-        <div class="project-head">
-          <h3>World Cup 2026 Analytics</h3>
-          <span class="live-tag"><span class="status-dot"></span>Deployed</span>
-        </div>
-        <p class="desc">
-          A sports-analytics side project that grew well beyond a hobby: Dixon-Coles
-          Poisson goal modelling, calibrated win probabilities, and Kelly-criterion
-          bankroll management, wrapped in a Streamlit dashboard with CI/CD. I later
-          added a "Match Intel Agent" — a LangChain + Gemini RAG agent that answers
-          questions over the match data.
-        </p>
-        <div class="stack">Python · scikit-learn · LangChain · ChromaDB · Streamlit</div>
-        <div class="links">
-          <a href="https://world-cup-2026-bets.streamlit.app/" target="_blank" rel="noopener">Try it live</a>
-          <a href="https://github.com/RrePitso/World-Cup-2026-Bets" target="_blank" rel="noopener">View code</a>
-        </div>
-      </div>
+<section id="experience">
+  <span class="eyebrow">Experience</span>
+  <h2>Where I have worked</h2>
+  <div class="row"><div class="when">Dec 2025 to present</div><div><h3>Software Developer / Full-Stack Engineer</h3><div class="org">P&amp;C Solutions, remote contract</div><p>Work with the CEO, designers and clients to build the company website and client web applications.</p><p>The website has brought in more client enquiries and new leads, including a UK client. I also built a full-stack housing prototype covering buying, renting and lease workflows for a client demonstration.</p></div></div>
+  <div class="row"><div class="when">Jan 2026 to present</div><div><h3>Founder and Lead Developer</h3><div class="org">iDelivery, University of Fort Hare</div><p>Built and run a live WhatsApp delivery coordination system for the campus community.</p></div></div>
+  <div class="row"><div class="when">Sep 2026 to Oct 2026</div><div><h3>Data Science Intern</h3><div class="org">Oasis Infobyte</div><p>Completed all 5 assigned tasks against a minimum of 3, each published on GitHub with a demo video, and gave peer feedback to other interns.</p></div></div>
+  <div class="row"><div class="when">Sep 2026</div><div><h3>Software Developer</h3><div class="org">CAPACITI Tech Accelerator</div><p>Built the AI Productivity Assistant in one week. Earned the Google AI Essentials certification and completed a SAQA-accredited assessment (Unit Standard 114050).</p></div></div>
+  <div class="row"><div class="when">Jun 2026 to Sep 2026</div><div><h3>Systems Development and Data Specialist</h3><div class="org">Dynamic DNA (DVT Group / MICT SETA)</div><p>Selected for a government-sponsored scarce-skills data academy working on cloud data architectures in Azure. Earned DP-900 and DP-700.</p></div></div>
+  <div class="row"><div class="when">May 2026 to present</div><div><h3>Independent Developer</h3><div class="org">World Cup 2026 prediction pipeline</div><p>Designed, built and maintain the machine learning pipeline described above, and I am moving its data infrastructure to Microsoft Fabric.</p></div></div>
+</section>
 
-      <!-- EmotiCare -->
-      <div class="project is-testing">
-        <div class="project-head">
-          <h3>EmotiCare</h3>
-          <span class="live-tag is-testing"><span class="status-dot is-testing"></span>Android app · in testing</span>
-        </div>
-        <p class="desc">
-          A mental wellness app for reflective journaling and emotional support.
-          It combines a daily check-in, a private journal with pattern tracking,
-          grounding and breathing tools, and an AI companion powered by the Gemini
-          API you can talk to when things feel heavy. Crisis resources and a clear
-          "not a clinical tool" notice are built in.
-        </p>
-        <div class="stack">Gemini API · Android · Journaling · AI chat</div>
-        <div class="links">
-          <a href="https://drive.google.com/file/d/1jZzSyzageM6t6EMokT4QQ5XFTKn1ykWe/view?usp=drivesdk" target="_blank" rel="noopener">Download the Android app (APK)</a>
-        </div>
-        <p class="note">
-          Android only for now. You may need to allow installs from unknown sources,
-          and Google Drive may show a scan warning for APK files.
-        </p>
-      </div>
+<section id="education">
+  <span class="eyebrow">Education and certifications</span>
+  <h2>Formal training</h2>
+  <div class="row"><div class="when">Feb 2023 to present</div><div><h3>BSc Computer Science, Mathematics major</h3><div class="org">University of Fort Hare</div><p>Coursework complete. Final examination written October 2026, results pending. Distinctions in Introduction to Computing and Programming Concepts and two other first-year modules (85%+), and in Operating Systems (76%).</p></div></div>
+  <ul class="certs">
+    <li><b>Microsoft Azure Data Fundamentals (DP-900)</b><span>Certified, July 2026</span></li>
+    <li><b>Microsoft Fabric Data Engineer Associate (DP-700)</b><span>Certified, Sept 2026</span></li>
+    <li><b>Google AI Essentials Professional Certification</b><span>Certified, Sept 2026 (via CAPACITI)</span></li>
+  </ul>
+</section>
 
-      <div class="project">
-        <div class="project-head">
-          <h3>Email RAG</h3>
-        </div>
-        <p class="desc">
-          An AI email classification system using retrieval-augmented generation,
-          deployed on Render. Built the first version, then went back to fix a
-          Gemini API regional restriction and identify technical debt — including
-          a plan to move from regex-based parsing to structured JSON output.
-        </p>
-        <div class="stack">React · Node.js · Express · TypeScript · Gemini API</div>
-        <div class="links">
-          <a href="https://github.com/RrePitso/Email_RAG" target="_blank" rel="noopener">View code</a>
-        </div>
-      </div>
-
-      <h3 style="margin-top: 0.5rem; font-size: 1.05rem; font-family: var(--font-body); font-weight: 700;">More deployed work</h3>
-      <div class="mini-grid">
-        <div class="mini-card">
-          <h4>Collivery Estimator</h4>
-          <p>A delivery-cost estimation tool.</p>
-          <a href="https://colliveryestimator.streamlit.app/" target="_blank" rel="noopener">Open app →</a>
-        </div>
-        <div class="mini-card">
-          <h4>Department of Transport Pitch</h4>
-          <p>A pitch/demo application built around a transport-sector use case.</p>
-          <a href="https://departmentoftransportpitch.streamlit.app/" target="_blank" rel="noopener">Open app →</a>
-        </div>
-        <div class="mini-card">
-          <h4>MLOps Churn Demo</h4>
-          <p>A customer-churn prediction demo built to show MLOps practices end-to-end.</p>
-          <a href="https://mlops-churn-demo.streamlit.app/" target="_blank" rel="noopener">Open app →</a>
-        </div>
-        <div class="mini-card">
-          <h4>SpazaML</h4>
-          <p>A machine learning project supporting local spaza-shop retailers.</p>
-          <a href="https://spazaml-6rnex2xkxidhmv2xrqjxnn.streamlit.app/" target="_blank" rel="noopener">Open app →</a>
-        </div>
-        <div class="mini-card">
-          <h4>AccountingGit</h4>
-          <p>A lightweight accounting/bookkeeping tool.</p>
-          <a href="https://accountinggit-ea8jmzbbhbgswyxj9us4ff.streamlit.app/" target="_blank" rel="noopener">Open app →</a>
-        </div>
-        <div class="mini-card">
-          <h4>Kokolobeng Demo</h4>
-          <p>A demo application — description pending.</p>
-          <a href="https://kokolobengdemo.streamlit.app/" target="_blank" rel="noopener">Open app →</a>
-        </div>
-      </div>
-
-    </section>
-
-    <!-- VIDEO ADS -->
-    <section id="video-ads">
-      <span class="eyebrow">Video ads</span>
-      <h2>Ads I generated with AI</h2>
-      <p>
-        Short promo videos I created with AI video tools. Good for showing how I
-        market what I build, not just how I build it.
-      </p>
-
-      <div class="video-grid">
-        <figure class="video-card">
-          <video controls playsinline preload="metadata" src="I_want_to_do_a_little_animated.mp4">
-            Your browser can't play this video.
-          </video>
-          <figcaption>Animated promo ad</figcaption>
-        </figure>
-
-        <figure class="video-card">
-          <video controls playsinline preload="metadata" src="I_want_to_create_an_add_that.mp4">
-            Your browser can't play this video.
-          </video>
-          <figcaption>Promo ad</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section id="experience">
-      <span class="eyebrow">Experience</span>
-      <h2>Where I've worked</h2>
-
-      <!-- NEW: CAPACITI -->
-      <div class="timeline-item">
-        <div class="when">Sep 2026</div>
-        <div>
-          <h3>Software Developer</h3>
-          <div class="org">CAPACITI Tech Accelerator — AI Productivity Assistant</div>
-          <p class="body-text">
-            Selected for CAPACITI's intensive one-week Tech Accelerator, covering
-            enterprise IT business principles and applied AI integration. Built a
-            full-stack, role-based productivity platform (Next.js, Supabase,
-            Tailwind CSS and LLM APIs) that automates cohort metrics,
-            administrative communication and task scheduling. I worked with an AI
-            coding agent throughout, directing it to draft the code and then
-            reviewing, testing and verifying every change before it shipped.
-            Earned the Google AI Essentials Professional Certification and
-            completed a SAQA-accredited assessment (Unit Standard 114050) in the
-            same week.
-          </p>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="when">2024 — Present</div>
-        <div>
-          <h3>Founder</h3>
-          <div class="org">iDelivery</div>
-          <p class="body-text">Built and now run a live hyperlocal delivery platform serving the University of Fort Hare community.</p>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="when">Ongoing</div>
-        <div>
-          <h3>Remote Software Developer</h3>
-          <div class="org">P&C Solutions</div>
-          <p class="body-text">Contract software development work, remote.</p>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="when">Concludes Sept 2026</div>
-        <div>
-          <h3>MICT SETA Learnership</h3>
-          <div class="org">Dynamic DNA (DVT Group)</div>
-          <p class="body-text">Structured technical learnership programme.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- EDUCATION + CERTIFICATIONS -->
-    <section id="education">
-      <span class="eyebrow">Education & certifications</span>
-      <h2>Formal training</h2>
-
-      <div class="timeline-item">
-        <div class="when">Expected May 2027</div>
-        <div>
-          <h3>BSc Computer Science, Mathematics major</h3>
-          <div class="org">University of Fort Hare</div>
-          <p class="body-text">Final year — one outstanding exam remaining, in November 2026.</p>
-        </div>
-      </div>
-
-      <ul class="cert-list">
-        <li>
-          <span class="cert-name">Microsoft Azure Data Fundamentals (DP-900)</span>
-          <span class="cert-status">Certified — July 2026</span>
-        </li>
-        <li>
-          <span class="cert-name">Microsoft Fabric Data Engineer Associate (DP-700)</span>
-          <span class="cert-status">Certified — Sept 2026</span>
-        </li>
-        <li>
-          <span class="cert-name">Google AI Essentials Professional Certification</span>
-          <span class="cert-status">Certified — Sept 2026 (via CAPACITI)</span>
-        </li>
-      </ul>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact">
-      <span class="eyebrow">Contact</span>
-      <h2>Let's talk</h2>
-      <p>
-        I'm actively looking for AI and software engineering roles — internships
-        and graduate positions both. If something I've built here is relevant to
-        what your team is working on, I'd like to hear from you.
-      </p>
-      <div class="contact-block">
-        <a id="emailLink" href="mailto:ofentsepitsopop@gmail.com" aria-label="Email Ofentse Pitso at ofentsepitsopop@gmail.com">ofentsepitsopop@gmail.com</a>
-        <a id="gmailCompose" href="https://mail.google.com/mail/?view=cm&fs=1&to=ofentsepitsopop@gmail.com" target="_blank" rel="noopener" aria-label="Compose email in Gmail (opens new tab)">Compose in Gmail</a>
-        <a href="https://github.com/RrePitso" target="_blank" rel="noopener">github.com/RrePitso</a>
-        <a href="https://linkedin.com/in/ofentse-pitso" target="_blank" rel="noopener">linkedin.com/in/ofentse-pitso</a>
-      </div>
-    </section>
-
-  </main>
+<section id="contact">
+  <span class="eyebrow">Contact</span>
+  <h2>Let's talk</h2>
+  <p>I am looking for web, software, AI and data roles, including internships and graduate positions. If something here fits what your team is building, I would like to hear from you.</p>
+  <div class="contact">
+    <a href="mailto:ofentsepitsopop@gmail.com">ofentsepitsopop@gmail.com</a>
+    <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=ofentsepitsopop@gmail.com" target="_blank" rel="noopener">Compose in Gmail</a>
+    <a href="https://github.com/RrePitso" target="_blank" rel="noopener">github.com/RrePitso</a>
+    <a href="https://linkedin.com/in/ofentse-pitso" target="_blank" rel="noopener">linkedin.com/in/ofentse-pitso</a>
+  </div>
+</section>
+</main>
 </div>
-
-<footer>
-  © 2026 Ofentse Pitso. Built by hand, not a template.
-</footer>
-
+<footer>© 2026 Ofentse Pitso. Built by hand, not from a template.</footer>
 <script>
-  (function () {
-    const sidebar = document.getElementById('sidebar');
-    const menuToggle = document.getElementById('menuToggle');
-    if (menuToggle && sidebar) {
-      menuToggle.addEventListener('click', () => sidebar.classList.toggle('open'));
-    }
-
-    document.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', () => sidebar && sidebar.classList.remove('open'));
-    });
-
-    const sections = document.querySelectorAll('main section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
-
-    if ('IntersectionObserver' in window && sections.length && navLinks.length) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const id = entry.target.getAttribute('id');
-            navLinks.forEach(link => {
-              link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
-            });
-          }
-        });
-      }, { rootMargin: '-40% 0px -55% 0px' });
-
-      sections.forEach(section => observer.observe(section));
-    }
-
-    const emailLink = document.getElementById('emailLink');
-    if (emailLink) {
-      emailLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        window.location.href = emailLink.getAttribute('href');
-      });
-    }
-
-    // Only one video plays at a time
-    const videos = document.querySelectorAll('.video-card video');
-    videos.forEach(v => {
-      v.addEventListener('play', () => {
-        videos.forEach(other => { if (other !== v) other.pause(); });
-      });
-    });
-  })();
+(function(){
+  var sb=document.getElementById('sidebar'),m=document.getElementById('menu');
+  if(m)m.addEventListener('click',function(){sb.classList.toggle('open')});
+  var links=document.querySelectorAll('.nl');
+  links.forEach(function(l){l.addEventListener('click',function(){sb.classList.remove('open')})});
+  var secs=document.querySelectorAll('main section[id]');
+  if('IntersectionObserver' in window){
+    var o=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting){links.forEach(function(l){l.classList.toggle('active',l.getAttribute('href')==='#'+e.target.id)})}
+    })},{rootMargin:'-40% 0px -55% 0px'});
+    secs.forEach(function(s){o.observe(s)});
+  }
+  var vids=document.querySelectorAll('.videos video');
+  vids.forEach(function(v){v.addEventListener('play',function(){vids.forEach(function(x){if(x!==v)x.pause()})})});
+})();
 </script>
-
 </body>
 </html>
